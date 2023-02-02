@@ -1,0 +1,51 @@
+GET _cluster/health
+
+GET _nodes/stats
+
+GET _cat/indices
+
+PUT favorite_candy
+
+DELETE favorite_candy
+
+PUT favorite_candy
+
+POST favorite_candy/_doc
+{
+  "name": "Majd",
+  "candy": "Lionbar"
+}
+
+PUT favorite_candy/_create/2
+{
+  "name": "Jane",
+  "candy": "M&Ms"
+}
+
+PUT favorite_candy/_doc/3
+{
+  "name": "Alex",
+  "candy": "Mars"
+}
+
+POST favorite_candy/_doc/4
+{
+  "name": "Bob",
+  "candy": "Twix"
+}
+
+PUT favorite_candy/_doc/3
+{
+  "name": "Moses",
+  "candy": "Fiacre"
+}
+
+GET favorite_candy/_doc/4
+
+POST favorite_candy/_update/4
+{
+  "doc": {
+    "candy": "M&Ms"
+  }
+}
+
