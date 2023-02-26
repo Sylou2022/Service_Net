@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Réponse</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="mail.css">
+</head>
+
+<style>
+   .container{
+     width: 65%;
+     margin-left: 40px;
+     position: relative;
+
+   }
+ 
+</style>
+<body>
+    <center>
+      <div class="container ">
+  <form action="mail.php" method="POST"> 
+    <div class="form-floating mb-3">
+<label for="name">Nom : </label>
+<input type="name" name="name" class="form-control" placeholder="Nom" required></div>
+<br>
+<br>
+<div class="form-floating mb-3">
+<label for="Email">Email: </label>
+<input type="email" name="email" class="form-control" placeholder="example@gmail.com" required></div>
+<br>
+<br>
+<div class="form-floating mb-3">
+<label for="Message">Message : </label>
+<textarea  name="message" class="form-control" placeholder="Saisir votre message ici" cols="25" rows="10" required></textarea></div>
+<input type="file" name="fichier" id="fichier">
+<br>
+<br>
+<p>
+<input type="submit" name="Envoyer" value="Envoyer"  class="btn btn-outline-warning" style="color: black;">
+&nbsp;
+<br><br>
+<a href="Message.php" style="color: red;">Retour aux Messages</a> ou <a href="Commentaires.php" style="color: red;">Commentaires</a>
+<br> <a href="verificationPaypal.php">Vérification Paypal</a>
+</p>
+<br><br>
+</form>
+</div>
+</center>
+
+   
+</body>
+</html>

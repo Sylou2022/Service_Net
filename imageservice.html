@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+   
+    <link rel="stylesheet" href="footer.css">
+   
+      <link rel="icon" href="favicon.ico" />
+</head>
+<style>
+    
+
+*{box-sizing:border-box}
+
+img{
+
+max-width: 100%;
+
+}
+
+/*pour le saut de page, on cree une class que l'on met en display:none*/
+.target{
+
+display: none
+
+}
+
+
+/* englobe le slider */
+
+.cadre_diapo{
+
+max-width: 800px;
+margin: 2rem auto;
+overflow: hidden;
+	
+	}
+
+.interieur_diapo{
+	
+display: flex;
+width: 400%;
+transition: transform .6s ease-in-out
+	
+	}
+
+.description{
+
+position: relative;
+
+}
+
+.description span{
+
+position: absolute;
+left: 0;
+top: 2%;
+font-size: 75%;
+display: flex;
+padding: .5rem;
+justify-content: center;
+color: white;
+background: hsla(0,0%,0%,.35)
+	
+	}
+	
+	
+#votre_id1:target ~ .cadre_diapo .interieur_diapo{
+
+transform:translatex(0)
+
+}/*image 1*/
+
+#votre_id2:target ~ .cadre_diapo .interieur_diapo{
+
+transform:translatex(-25%)
+
+}/*image 2*/
+
+#votre_id3:target ~ .cadre_diapo .interieur_diapo{
+
+transform:translatex(-50%)
+
+}/*image 3*/
+
+#votre_id4:target ~ .cadre_diapo .interieur_diapo{
+
+transform:translatex(-75%)
+
+}/*image 4*/
+
+
+/*navigation avec images miniatures*/
+.navigation_diapo{
+	
+display: flex; /*permet d'aligner les photos les unes à la suite des autres, on peut aussi utiliser le positionnement absolu*/
+list-style-type: none;
+margin: 0;
+padding: 0
+	
+	}
+
+.navigation_diapo li {
+	
+	padding: .25rem;
+	
+	}
+
+.navigation_diapo img{
+
+border: 3px solid white;
+box-shadow:0 0 5px hsla(0,0%,0%,.4);
+
+	
+	}
+	
+	
+	@media (min-width:31.25rem){
+		
+		.description span{
+			
+			font-size: initial
+		
+		}
+	
+	}
+	
+
+</style>
+<body>
+                       
+    <nav class="navbar navbar-inverse" >
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="Accueil.php">Accueil</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Images</a></li>
+            <li><a href="Service.php">Services</a></li>
+            <li><a href="Presentation.php">Présentation</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            
+            <li><a href="users.php"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
+            <li><a href="Compte.php"><span class="glyphicon glyphicon-log-in"></span> Compte</a></li>
+          </ul>
+        </div>
+      </nav>
+
+    <br><br><br>
+
+<span id="votre_id1" class="target">
+</span>
+<span id="votre_id2" class="target">
+</span>
+<span id="votre_id3" class="target">
+</span>
+<span id="votre_id4" class="target">
+</span>
+<div class="cadre_diapo">
+<div class="interieur_diapo">
+<div class=description>
+<span>
+Chantier réalisé à Rabat
+</span>
+<img src="image/menuisr.jpg" alt>
+</div>
+<div class=description>
+<span>
+Chantier réalisé à Salé
+</span>
+<img src="image/Services/menui chnt1.jpg" alt>
+</div>
+<div class=description>
+<span>
+Chantier réalisé à Temara
+</span>
+<img src="image/Services/chnt macn2.jpg" alt>
+</div>
+<div class=description>
+<span>
+Chantier réalisé à Casablanca
+</span>
+<img src="image/Services/cnht plmb1.jpg" alt>
+</div>
+</div>
+<ul class="navigation_diapo">
+<li>
+<a href="#votre_id1">
+<img src="image/menuisr.jpg" alt>
+</a>
+</li>
+<li>
+<a href="#votre_id2">
+<img src="image/Services/menui chnt1.jpg" alt>
+</a>
+</li>
+<li>
+<a href="#votre_id3">
+<img src="image/Services/chnt macn2.jpg" alt>
+</a>
+</li>
+<li>
+<a href="#votre_id4">
+<img src="image/Services/cnht plmb1.jpg" alt>
+</a>
+</li>
+</ul>
+</div>
+<br><br><br>
+<div class="footer-basic">
+    <footer>
+        <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="Accueil.php">Accueil</a></li>
+            <li class="list-inline-item"><a href="Presentation.php">Présentation</a></li>
+            <li class="list-inline-item"><a href="Metiers.php">Métiers</a></li>
+            <li class="list-inline-item"><a href="Documentation.html">Documentation</a></li>
+            <li class="list-inline-item"><a href="#">Politique confidentialité</a></li>
+        </ul>
+        <p class="copyright">Service Net © 2022</p>
+    </footer>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+
+</div>
+
+</body>
+</html>
