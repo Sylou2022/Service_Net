@@ -1,6 +1,6 @@
 <?php
 $con= mysqli_connect('localhost','root','');
-mysqli_select_db($con, 'service_net');
+mysqli_select_db($con, 'invoicedb');
 
 ?>
 <!DOCTYPE html>
@@ -16,7 +16,7 @@ mysqli_select_db($con, 'service_net');
 </head>
 <style>
     .facture{
-        background-color: lightgray;
+        background-color:aqua;
         margin-left: 245px;
         width: 50%;
         text-align: center;
@@ -29,12 +29,9 @@ mysqli_select_db($con, 'service_net');
 <body>
 <div class="facture" >
     Selectionner Référence de Facture:
-
-    <br><br>
     
     <form action="invoice-db.php" method="get">
         <select name="invoiceID" id="">
-           
             <?php
             $query = mysqli_query($con,"select * from invoice");
             while($invoice = mysqli_fetch_array($query)){

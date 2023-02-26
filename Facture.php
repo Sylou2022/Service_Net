@@ -2,7 +2,7 @@
 <?php
   // Initialiser la session
   
-include "Connexion.php";
+include "connexion.php";
  session_start(); 
  ?>
 
@@ -13,20 +13,13 @@ include "Connexion.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Facture</title>
-    
-    <link href="styles.css" rel="stylesheet" />
+    <link rel="icon" href="favicon.ico" />
+    <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-        <link rel="icon" href="favicon.ico" />
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="footer.css">
-  
-  
-  
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+
+    
 </head>
 
 <style type="text/css">
@@ -34,10 +27,8 @@ include "Connexion.php";
 		img{
 			width: 70px;
 		}
-		.form{
-      color:black;
-
-    }
+   
+		
 	</style>
    <script>
     function tva(){
@@ -49,8 +40,6 @@ include "Connexion.php";
 </script>
   
 <body class="bg-light">
-
-
 <div id="layoutAuthentication">
  <div id="layoutAuthentication_content">
  <main>
@@ -58,12 +47,12 @@ include "Connexion.php";
  <div class="row justify-content-center">
  <div class="col-lg-8">
 <div class="card shadow-lg border-0 rounded-lg mt-5">
-<div class="card-header"><h3 class="text-center font-weight-light my-4" style="color: black;">Nouvelle Facture</h3></div>
+<div class="card-header"><h3 class="text-center font-weight-light my-4" >Nouvelle Facture</h3></div>
  <div class="card-body">
 
-<form name="mon-formulaire1" action="Facture.php" method="POST" class="form">
+<form name="mon-formulaire1" action="Facture.php" method="POST" >
 
-<div class="row mb-3">
+<div class="row mb-3">  
   
 <?php
     $result=mysqli_query($db,"SELECT * FROM item");
@@ -82,7 +71,7 @@ include "Connexion.php";
     ?>
                 </select>              
                 <div class="btn" >Référence:</div> &nbsp;
-                <select class="form-select form-select-lg mb-3" id="sous_cato" name="referclient" ></select>               
+                <select class="form-select form-select-lg mb-3" id="sous_cato" name="reference" ></select>               
                
             </div>         
 
@@ -161,11 +150,11 @@ include "Connexion.php";
         });
    
     </script>
- 
-  &nbsp;   
+
+&nbsp;
+<div class="row mb-3">
   
-  <div class="row mb-3">
-  &nbsp;                                             
+  &nbsp;                                               
 <label for="pet-select" >Type </label><br><br>
 <div class="form-floating mb-3 mb-md-0" >
   <input type="radio" name="typefacture" value="Facture standard" /> Facture standard  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -219,14 +208,13 @@ include "Connexion.php";
 </select>
 </div>
 <br>
-
+ <div class="col-md-6">
 <div class="form-floating mb-3 mb-md-0">
 <label for="inputEmail"> Incoterms</label><br><br>
 <input class="form-control" id="inputFirstName" type="text" name="incoterms"  />                                                        
   </div>
-
-
- &nbsp;
+ </div>
+ <br>
  <div class="form-floating mb-3 mb-md-0">                                                   
   <label for="pet-select">Modèle de document </label><br><br>
  <select name="modeledocu" class="form-select form-select-lg mb-3" >
@@ -302,7 +290,7 @@ include "Connexion.php";
  <div class="col-md-6">
 <div class="form-floating mb-3 mb-md-0">
 <label for="inputEmail"> Total TTC Dirhams:</label><br><br>
-<input class="form-control" type="text"  id ="ht" name="prixTTC" style="color: red;" ><p onclick="tva()"> Click ici Résultat </p>                                                        
+<input class="form-control" type="text"  id ="ht" name="prixTTC" ><p onclick="tva()"> Click ici Résultat </p>                                                        
   </div>
  </div>
  
@@ -327,7 +315,7 @@ include "Connexion.php";
   &nbsp;
  </div>
  <div  style="text-align: center;">
- <div  class="bnt-btn"><a href="Espace_Admin.php" style="text-align: center;"> Portail</a>&nbsp;&nbsp;&nbsp;<input class="btn btn-primary " type="submit" name="Creer" value="Creer"> &nbsp;&nbsp;&nbsp;<input class="btn btn-danger " type="reset" name="Annuler" value="Annuler"> &nbsp;&nbsp;&nbsp;<a href="invoice-form-db.php">Suivant</a></div></div>
+ <div  class="bnt-btn"><a href="Accueil.php" style="text-align: center;"> Accueil</a>&nbsp;&nbsp;&nbsp;<input class="btn btn-primary " type="submit" name="Creer" value="Creer"> &nbsp;&nbsp;&nbsp;<input class="btn btn-danger " type="reset" name="Annuler" value="Annuler"> &nbsp;&nbsp;&nbsp;<a href="invoice-form-db.php">Suivant</a></div></div>
  <br><br>
  </div>  
  
@@ -345,12 +333,10 @@ include "Connexion.php";
 $db=mysqli_connect("localhost","root","","invoicedb");
 
 if(isset($_POST['Creer'])){
-
   $itideminvoice=$_POST['itideminvoice'];
-    $referclient=$_POST['referclient'];   
-    
-    $nameclient=$_POST['nameclient'];
-    $codeclient=($_POST['codeclient']);
+  $referclient=$_POST['referclient'];
+  $nameclient=$_POST['nameclient'];
+  $codeclient=($_POST['codeclient']);       
     $typefacture=$_POST['typefacture'];
     $datefacturation=($_POST['datefacturation']);
     $conditionregl=($_POST['conditionregl']);
@@ -396,16 +382,6 @@ if(isset($_POST['Creer'])){
      </div> 
      
      </main>
-<br>
-     
-<div class="footer-basic">
-    <footer>
-        
-        <p class="copyright">Service Net © 2022</p>
-    </footer>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 </body>
  
 </html>

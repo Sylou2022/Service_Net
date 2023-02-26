@@ -1,13 +1,12 @@
 <?php
 require('fpdff/fpdf.php');
 $con=mysqli_connect('localhost','root','');
-mysqli_select_db($con,'service_net');
+mysqli_select_db($con,'invoicedb');
 
-$query=mysqli_query($con,"SELECT * FROM invoice
+$query=mysqli_query($con,"select * from invoice
 	inner join clients using(clientID)
 	where
 	invoiceID = '".$_GET['invoiceID']."'");
-
 $invoice=mysqli_fetch_array($query);
 $date_echeance= 30;
 $date_facturation=0;
@@ -18,21 +17,21 @@ $date_facturation=0;
 
 $pdf = new FPDF('P','mm','A4');
 $pdf->AddPage();
-$pdf->Image('image/Logo/SERVICE NET (9).png', 11, 3, 25);
+$pdf->Image('image/logo.png', 11, 5, 37);
 $pdf->Cell(130	,5,'',0,1);
 //set font to arial, bold, 14pt
 $pdf->SetFont('Arial','B',12);
 
 //Cell(width , height , text , border , end line , [align] )
 $pdf->Cell(130	,10,'',0,1);
-$pdf->Cell(130	,10,'Service Net',0,0);
+$pdf->Cell(130	,10,'OPEN BUSINESS INFORMATIQUE',0,0);
 
 $pdf->Cell(59	,5,'Facture',0,1);//end of line
 
 //set font to arial, regular, 12pt
 $pdf->SetFont('Arial','',10);
 
-$pdf->Cell(130	,10,'Rue 66, Avenu Oqba, Agdal-10040',0,0);
+$pdf->Cell(130	,10,'Rue Tokyo, Imm 8, Appt N:5, Ocean-10040',0,0);
 $pdf->Cell(59	,5,'',0,1);//end of line
 
 $pdf->Cell(130	,10,'RABAT',0,0);
@@ -52,12 +51,12 @@ $pdf->Cell(130	,10,'Tel: +212648182020',0,0);
 $pdf->Cell(30	,5,'Date echeance:',0,0);
 $pdf->Cell(26	,5,date("d/m /Y", strtotime(' + 30 days')),0,1);
 
-$pdf->Cell(130	,10,'FAX:+212638445442',0,0);
+$pdf->Cell(130	,10,'FAX:+212537681156',0,0);
 $pdf->Cell(25	,5,'Code client:',0,0);
 $pdf->Cell(34	,5,$invoice['clientID'],0,1);//end of line
 
-$pdf->Cell(130	,10,'Email: servicenet22@outlook.com',0,1);
-$pdf->Cell(130	,3,'web:http://servicenet.com',0,1);
+$pdf->Cell(130	,10,'Email: brahim@obimaroc.com',0,1);
+$pdf->Cell(130	,3,'web:http://obimaroc.com',0,1);
 
 //make a dummy empty cell as a vertical spacer
 $pdf->Cell(189	,3,'',0,1);//end of line
@@ -94,8 +93,8 @@ $pdf->SetFont('Arial','B',10);
 
 $pdf->Cell(15	,8,'Num:',1,0);
 $pdf->Cell(70	,8,'Description',1,0);
-$pdf->Cell(50	,8,'Montant Service',1,0);
-$pdf->Cell(30	,8,'Quant (materiel)',1,0);
+$pdf->Cell(50	,8,'P.U.HT',1,0);
+$pdf->Cell(30	,8,'Quantite',1,0);
 $pdf->Cell(31	,8,'Total HT',1,1);//end of line
 
 $pdf->SetFont('Arial','',12);
@@ -104,7 +103,7 @@ $pdf->SetFont('Arial','',12);
 
 //items
 $query=mysqli_query($con,"select * from invoice where invoiceID = '".$invoice['invoiceID']."'");
-$montant_Service=0;
+$Prix_HT=0;
 $quantite_invoice=0;
 
 $totalht_invoive=0;
@@ -117,11 +116,11 @@ $ttc_impaye=0;
 while($item=mysqli_fetch_array($query)){
 	$pdf->Cell(15	,110,$invoice['itemID'],1,0);
 	$pdf->Cell(70	,110,$invoice['Designation'],1,0);
-	$pdf->Cell(50	,110,number_format($invoice['montant_Service']),1,0);
+	$pdf->Cell(50	,110,number_format($invoice['prix_HT']),1,0);
 	$pdf->Cell(30	,110,number_format($invoice['quantite_invoice']),1,0,'R');
 	$pdf->Cell(31   ,110,number_format($invoice['totalht_invoive']),1,1,'R');
 	
-	$montant_Service+=$invoice['montant_Service'];
+	$Prix_HT+=$invoice['prix_HT'];
 	$quantite_invoice+=$invoice['quantite_invoice'];
 	$totalht_invoive+=$invoice['totalht_invoive'];
 	$tva_invoice+=$invoice['tva_invoice'];
@@ -136,7 +135,7 @@ $pdf->SetFont('Arial','B',10);
 $pdf->Cell(130	,8,'',0,0);
 $pdf->Cell(25	,8,'Total HT:',0,0);
 $pdf->Cell(11	,8,'DHR',1,0);
-$pdf->Cell(30	,8,number_format($montant_Service*$quantite_invoice),1,1,'R');//end of line
+$pdf->Cell(30	,8,number_format($Prix_HT*$quantite_invoice),1,1,'R');//end of line
 
 $pdf->Cell(130	,8,'',0,0);
 $pdf->Cell(25	,8,'TVA 20:',0,0);

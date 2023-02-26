@@ -1,4 +1,4 @@
-<?php require_once ('Connexion.php');
+<?php require_once ('connexion.php');
 
 $item_id=$_POST['item_id'];
 $result=mysqli_query($db,"SELECT * FROM invoice where itemID=$item_id");
